@@ -1,0 +1,8 @@
+{
+  "name": "FreshTom QC & COA Suite",
+  "description": "ระบบบริหารจัดการและควบคุมคุณภาพมะเขือเทศเชอร์รี่ 5 สายพันธุ์ ครบวงจร ตั้งแต่การตรวจรับวัตถุดิบ (QC Incoming) ห้องปฏิบัติการ (QC LAB) การตรวจปล่อยสินค้า (QC Outgoing) และการออกใบรับรองผลการวิเคราะห์ (COA) มาตรฐาน A4",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

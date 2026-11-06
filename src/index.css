@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", "Anuphan", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "Anuphan", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.015em;
+  }
+
+  button, input, select, textarea {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.coa-document-typography {
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  line-height: 1.5;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes popupEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popupProgress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.animate-popup-enter {
+  animation: popupEnter 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-popup-progress {
+  transform-origin: left center;
+  animation: popupProgress 5s linear forwards;
+}
+
+/* Standard A4 Certificate Print Styling */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  html,
+  body {
+    scrollbar-gutter: auto !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-force-block {
+    display: block !important;
+  }
+
+  main,
+  .print-only-container,
+  .coa-preview-stage {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .coa-scale-box {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  .coa-scale-transform {
+    width: 100% !important;
+    transform: none !important;
+  }
+
+  #coa-a4-sheet {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 auto !important;
+    padding: 5mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  #coa-a4-sheet > * + * {
+    margin-top: 0.2rem !important;
+  }
+
+  /* Incoming QC Report Sheet Print Layout */
+  #incoming-qc-report-sheet {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 210mm !important;
+    min-height: 297mm !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 7mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid;
+  }
+
+  body.printing-incoming-qc .incoming-qc-screen-only {
+    display: none !important;
+  }
+
+  body.printing-incoming-qc #incoming-qc-report-sheet {
+    display: block !important;
+  }
+
+  /* Universal Report Sheet Print Layout */
+  #overview-report-sheet,
+  #traceability-report-sheet,
+  #lab-qc-report-sheet,
+  #outgoing-qc-report-sheet {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 194mm !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+    padding: 6mm !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  body.printing-overview .overview-screen-only,
+  body.printing-traceability .overview-screen-only,
+  body.printing-lab-qc .lab-qc-screen-only,
+  body.printing-outgoing-qc .outgoing-qc-screen-only {
+    display: none !important;
+  }
+
+  body.printing-overview #overview-report-sheet,
+  body.printing-traceability #traceability-report-sheet,
+  body.printing-lab-qc #lab-qc-report-sheet,
+  body.printing-outgoing-qc #outgoing-qc-report-sheet {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    pointer-events: auto !important;
+    z-index: auto !important;
+  }
+}
+
